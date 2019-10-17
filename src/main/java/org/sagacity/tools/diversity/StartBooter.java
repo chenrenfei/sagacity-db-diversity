@@ -77,9 +77,11 @@ public class StartBooter {
 		String target = diversityModel.getTarget().getName();
 		DBHelper.registConnection(diversityModel);
 		DBHelper.switchDB(reference);
+		reportModel.setReferenceDB(reference);
+		reportModel.setTargetDB(target);
 		List<TableMeta> sourceTables = DBHelper.getTableAndView(diversityModel.getInclude(),
 				diversityModel.getExclude());
-		//排序
+		// 排序
 		Collections.sort(sourceTables, new Comparator<TableMeta>() {
 			public int compare(TableMeta a, TableMeta b) {
 				return a.getTableName().compareToIgnoreCase(b.getTableName());
@@ -88,7 +90,7 @@ public class StartBooter {
 		DBHelper.switchDB(target);
 		List<TableMeta> targetTables = DBHelper.getTableAndView(diversityModel.getInclude(),
 				diversityModel.getExclude());
-		//排序
+		// 排序
 		Collections.sort(targetTables, new Comparator<TableMeta>() {
 			public int compare(TableMeta a, TableMeta b) {
 				return a.getTableName().compareToIgnoreCase(b.getTableName());
@@ -118,8 +120,7 @@ public class StartBooter {
 			diffModel.setTargetTable(table);
 			result.put(tableName.toLowerCase(), diffModel);
 		}
-		
-		
+
 		Iterator<TableDiffModel> iter = result.values().iterator();
 		TableDiffModel diffModel;
 		// 是否忽视注释的差异

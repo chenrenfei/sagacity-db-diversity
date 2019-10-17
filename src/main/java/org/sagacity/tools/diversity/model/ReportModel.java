@@ -22,6 +22,10 @@ public class ReportModel implements Serializable {
 
 	private int targetTableCnt;
 
+	private String targetDB;
+
+	private String referenceDB;
+
 	/**
 	 * 表的差异
 	 */
@@ -35,8 +39,7 @@ public class ReportModel implements Serializable {
 	}
 
 	/**
-	 * @param tableDiffs
-	 *            the tableDiffs to set
+	 * @param tableDiffs the tableDiffs to set
 	 */
 	public void setTableDiffs(Collection<TableDiffModel> tableDiffs) {
 		this.tableDiffs = tableDiffs;
@@ -50,8 +53,7 @@ public class ReportModel implements Serializable {
 	}
 
 	/**
-	 * @param reportTime
-	 *            the reportTime to set
+	 * @param reportTime the reportTime to set
 	 */
 	public void setReportTime(String reportTime) {
 		this.reportTime = reportTime;
@@ -83,6 +85,22 @@ public class ReportModel implements Serializable {
 	 */
 	public void setTargetTableCnt(int targetTableCnt) {
 		this.targetTableCnt = targetTableCnt;
+	}
+
+	public String getTargetDB() {
+		return targetDB;
+	}
+
+	public void setTargetDB(String targetDB) {
+		this.targetDB = targetDB;
+	}
+
+	public String getReferenceDB() {
+		return referenceDB;
+	}
+
+	public void setReferenceDB(String referenceDB) {
+		this.referenceDB = referenceDB;
 	}
 
 }
