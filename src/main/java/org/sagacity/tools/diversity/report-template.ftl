@@ -17,7 +17,7 @@
 <body>
 	<table border="1" cellspacing="0" class="table">
 	<tr>
-	<td colspan="9" align="middle" style="font-weight:bold; font-size:16px;">数据库:${root.referenceDB} VS 数据库:${root.targetDB} 差异报告-${root.reportTime}</td>
+	<td colspan="9" align="middle" style="font-weight:bold; font-size:16px;">数据库:[${root.referenceDB}] vs [${root.targetDB}] 差异报告-${root.reportTime}</td>
 	</tr>
 	   <tr>
 		<th>类型</th>
