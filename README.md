@@ -1,4 +1,4 @@
-# * 睿智平台下面的小工具,强烈推荐比mybatis强大的 sqltoy-orm，可以让查询性能优化大幅提升！
+# * db-diversity是睿智平台下面的小工具,强烈推荐比mybatis强大的 sqltoy-orm，可以让查询性能优化大幅提升！
   https://github.com/chenrenfei/sagacity-sqltoy
   
 # * sagacity-db-diversity
