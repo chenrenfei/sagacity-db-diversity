@@ -46,12 +46,8 @@ java -jar sagacity-diversity-all.jar ./db-diversity.xml
 cmd
 ```
 ## 5、执行完成后会在当前目录下生成diversity-report.html
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>数据库差异对比报告</title>
-	<style>
+	
+<style>
 	.table{font-size:14px;
 	width:100%;
 	text-align: center;	
@@ -60,9 +56,7 @@ cmd
 	line-height:32px;}	
 		
 	</style>
-</head>
 
-<body>
 	<table border="1" cellspacing="0" class="table">
 	<tr>
 	<td colspan="9" align="middle" style="font-weight:bold; font-size:16px;">数据库:[dev] vs [uat] 差异报告-2019年10月17日14时37分50秒</td>
@@ -233,8 +227,6 @@ cmd
 		<td></td>
 	   </tr>
   </table>
-</body>
-</html>
 
 
 
