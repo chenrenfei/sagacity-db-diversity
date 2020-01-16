@@ -5,7 +5,7 @@
 数据库差异比较工具，用于对比生产、开发、UAT不同环境的表、索引差异
 
 
-使用方法:
+# 使用方法:
 ## 1、创建一个目录:db-diversity
 ## 2、打包形成一个jar包,如：sagacity-diversity-4.1.2-jar-with-dependencies.jar(含驱动jar) 改名:sagacity-diversity-all.jar 
     放于db-diversity目录下面，如需其它数据库，创建drivers目录,将驱动放于其中。
