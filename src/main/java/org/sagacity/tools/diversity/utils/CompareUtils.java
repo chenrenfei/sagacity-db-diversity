@@ -37,7 +37,7 @@ public class CompareUtils {
 		Boolean ignoreForeignKeyName = diversityModel.isIgnoreForeignKeyName();
 		// 列差异
 		tableDiffModel.setColumnsDifference(
-				compareColumns(ignoreComment, sourceMeta.getColMetas(), targetMeta.getColMetas()));
+				compareColumns(diversityModel, ignoreComment, sourceMeta.getColMetas(), targetMeta.getColMetas()));
 		// 外键差异
 		tableDiffModel.setForeignKeyDifference(
 				compareForeignKeys(ignoreForeignKeyName, sourceMeta.getForeignKeys(), targetMeta.getForeignKeys()));
@@ -99,15 +99,17 @@ public class CompareUtils {
 	 * @param target
 	 * @return
 	 */
-	private static String compareColumns(Boolean ignoreComment, List<TableColumnMeta> source,
-			List<TableColumnMeta> target) {
+	private static String compareColumns(DiversityModel diversityModel, Boolean ignoreComment,
+			List<TableColumnMeta> source, List<TableColumnMeta> target) {
 		int sourceSize = (source == null) ? 0 : source.size();
 		int targetSize = (target == null) ? 0 : target.size();
+		String referenceDB = diversityModel.getReference().getName();
+		String targetDB = diversityModel.getTarget().getName();
 		if (sourceSize == 0) {
-			return "referenceDB的表无字段!";
+			return "db:" + referenceDB + " 中的表无字段!";
 		}
 		if (targetSize == 0) {
-			return "targetDB的表无字段!";
+			return "db:" + targetDB + " 中的表无字段!";
 		}
 		StringBuilder result = new StringBuilder();
 		for (TableColumnMeta var : source) {
@@ -135,7 +137,7 @@ public class CompareUtils {
 				}
 			}
 			if (!has) {
-				result.append("<br>字段:[" + var.getColName() + "]在targetDB中不存在!</br>");
+				result.append("<br>字段:[" + var.getColName() + "]在db:[" + targetDB + "] 中不存在!</br>");
 			}
 		}
 
@@ -218,7 +220,7 @@ public class CompareUtils {
 		} else
 			return "列名称不相同!";
 	}
-	
+
 	/**
 	 * @todo <b>对象比较</b>
 	 * @param target

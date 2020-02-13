@@ -138,9 +138,10 @@ public class StartBooter {
 			if (diffModel.isReference() && diffModel.isTarget()) {
 				StringBuilder message = new StringBuilder();
 				if (!ignoreComment) {
-					if (!sourceMeta.getTableRemark().equals(targetMeta.getTableRemark()))
+					if (!sourceMeta.getTableRemark().equals(targetMeta.getTableRemark())) {
 						message.append(
 								"表注释:[" + sourceMeta.getTableRemark() + "][" + targetMeta.getTableRemark() + "]不同!");
+					}
 				}
 				DBHelper.switchDB(reference);
 				sourceMeta.setColMetas(DBHelper.getTableColumnMeta(tableName));
@@ -158,8 +159,9 @@ public class StartBooter {
 						&& StringUtil.isBlank(diffModel.getForeignKeyDifference())
 						&& StringUtil.isBlank(diffModel.getIndexDifference())
 						&& StringUtil.isBlank(diffModel.getPkDifference())
-						&& StringUtil.isBlank(diffModel.getTableDifference()))
+						&& StringUtil.isBlank(diffModel.getTableDifference())) {
 					iter.remove();
+				}
 			}
 		}
 		// 关闭数据库

@@ -22,8 +22,8 @@
 	   <tr>
 		<th>类型</th>
 		<th>对象名称</th>
-		<th>参照数据库</th>
-		<th>对比数据库</th>
+		<th>数据库[${root.referenceDB}]</th>
+		<th>数据库[${root.targetDB}]</th>
 		<th>字段差异</th>
 		<th>主键差异</th>
 		<th>索引差异</th>
