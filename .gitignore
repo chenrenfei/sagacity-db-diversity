@@ -1,3 +1,2 @@
-/target/
-/bin/
-target/classes/META-INF/MANIFEST.MF
+target
+bin
