@@ -46,10 +46,10 @@
 		<log4j.version>2.13.0</log4j.version>
 		<freemarker.version>2.3.29</freemarker.version>
 		<commons-logging.version>1.2</commons-logging.version>
-		<mysql-connector-java.version>8.0.18</mysql-connector-java.version>
-		<ojdbc.version>12.2.0.1</ojdbc.version>
+		<mysql-connector-java.version>8.0.19</mysql-connector-java.version>
+		<ojdbc.version>19.3.0.0</ojdbc.version>
 		<postgresql.version>42.2.9</postgresql.version>
-		<mssql.version>7.4.1.jre8</mssql.version>
+		<mssql.version>8.2.0.jre8</mssql.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -82,7 +82,7 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.oracle.jdbc</groupId>
+			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>${ojdbc.version}</version>
 			<optional>true</optional>
