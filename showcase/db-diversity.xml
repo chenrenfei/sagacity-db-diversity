@@ -5,13 +5,13 @@
 	include-tables="(?i)\w+">
 	<!-- 测试 -->
 	<reference-db name="uat">
-		<url><![CDATA[jdbc:mysql://192.168.3.66:3306/crmuat?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8]]>
+		<url><![CDATA[jdbc:mysql://192.168.56.109:3306/sqltoy?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8]]>
 		</url>
 		<driver value="com.mysql.cj.jdbc.Driver" />
-		<username value="ubmp" />
-		<password value="Salesdbapswd" />
-		<catalog value="crmuat" />
-		<schema value="crmuat" />
+		<username value="sqltoy" />
+		<password value="sqltoy" />
+		<catalog value="sqltoy" />
+		<schema value="sqltoy" />
 	</reference-db>
 
 	<!-- uat -->
@@ -25,13 +25,13 @@
 		<schema value="ubmpdb" />
 	</target-db> -->
 	<target-db name="prod">
-		<url><![CDATA[jdbc:mysql://192.168.3.66:3306/crmprod?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8]]>
+		<url><![CDATA[jdbc:mysql://192.168.56.109:3306/sqltoy_sharding1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8]]>
 		</url>
 		<driver value="com.mysql.cj.jdbc.Driver" />
-		<username value="ubmp" />
-		<password value="Salesdbapswd" />
-		<catalog value="crmprod" />
-		<schema value="crmprod" />
+		<username value="sqltoy_sharding1" />
+		<password value="sqltoy_sharding1" />
+		<catalog value="sqltoy_sharding1" />
+		<schema value="sqltoy_sharding1" />
 	</target-db>
 	
 </diversity>

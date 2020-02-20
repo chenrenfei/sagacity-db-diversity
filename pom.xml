@@ -39,13 +39,11 @@
 		<!-- environment setting -->
 		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- commons - 公用jar begin -->
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<dom4j.version>2.1.1</dom4j.version>
 		<slf4j.version>1.7.30</slf4j.version>
 		<log4j.version>2.13.0</log4j.version>
 		<freemarker.version>2.3.29</freemarker.version>
-		<commons-logging.version>1.2</commons-logging.version>
 		<mysql-connector-java.version>8.0.19</mysql-connector-java.version>
 		<ojdbc.version>19.3.0.0</ojdbc.version>
 		<postgresql.version>42.2.9</postgresql.version>
@@ -63,19 +61,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>${commons-logging.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>*</groupId>
-					<artifactId>*</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-connector-java.version}</version>
@@ -99,7 +85,7 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>${mssql.version}</version>
 			<optional>true</optional>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
@@ -112,7 +98,6 @@
 			</exclusions>
 		</dependency>
 
-		<!-- log4j -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>

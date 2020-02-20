@@ -1,2 +1,2 @@
-java -jar sagacity-diversity-all-4.1.2.jar ./db-diversity.xml
+java -Djava.ext.dirs=./drivers -jar sagacity-diversity-4.1.2.jar ./db-diversity.xml
 cmd

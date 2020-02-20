@@ -28,6 +28,7 @@ import org.sagacity.tools.diversity.utils.FileUtil;
 import org.sagacity.tools.diversity.utils.IOUtil;
 import org.sagacity.tools.diversity.utils.StringUtil;
 import org.sagacity.tools.diversity.utils.TemplateUtils;
+import static java.lang.System.out;
 
 /**
  * @description 两个数据库比较工具,用于不同环境下数据库表、存储过程、函数等信息的比较,帮助项目在开发、UAT、生产等不同环境比较分析差异,快速定位问题保持环境一致性
@@ -45,20 +46,27 @@ public class StartBooter {
 	public void init() {
 		try {
 			String realLogFile = DiversityConstants.LOG_CONFIG;
-			if (realLogFile.charAt(0) == '/')
+			if (realLogFile.charAt(0) == '/') {
 				realLogFile = realLogFile.substring(1);
+			}
 			URL url = Thread.currentThread().getContextClassLoader().getResource(realLogFile);
 			InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(realLogFile);
 			ConfigurationSource source = new ConfigurationSource(stream, url);
 			Configurator.initialize(null, source);
-			File driverPath = new File(DiversityConstants.BASE_DIR, DiversityConstants.DRIVER_PATH);
-			if (!driverPath.exists()) {
-				System.out.println("请正确配置jdbc驱动类,将驱动放于路径:" + driverPath.getAbsolutePath());
-			} else {
-				ClassLoaderUtil
-						.loadJarFiles(FileUtil.getPathFiles(driverPath, new String[] { "[\\w|\\-|\\.]+\\.jar$" }));
-			}
 			logger = LogManager.getLogger(getClass());
+			// 获取jdk版本,jdk9开始无法支持jar包动态支持
+			int javaVersion = Integer.parseInt(System.getProperty("java.version").split("\\.")[0]);
+			if (javaVersion >= 9) {
+				logger.info("请使用java -Djava.ext.dirs=./drivers 方式加载额外依赖jar!");
+			} else {
+				File driverPath = new File(DiversityConstants.BASE_DIR, DiversityConstants.DRIVER_PATH);
+				if (!driverPath.exists()) {
+					out.println("请正确配置jdbc驱动类,将驱动放于路径:" + driverPath.getAbsolutePath());
+				} else {
+					ClassLoaderUtil
+							.loadJarFiles(FileUtil.getPathFiles(driverPath, new String[] { "[\\w|\\-|\\.]+\\.jar$" }));
+				}
+			}
 			logger.info("完成环境初始化!");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -87,6 +95,7 @@ public class StartBooter {
 				return a.getTableName().compareToIgnoreCase(b.getTableName());
 			}
 		});
+		//切换db
 		DBHelper.switchDB(target);
 		List<TableMeta> targetTables = DBHelper.getTableAndView(diversityModel.getInclude(),
 				diversityModel.getExclude());
@@ -185,10 +194,11 @@ public class StartBooter {
 				DiversityConstants.ENCODING);
 		String result = TemplateUtils.getInstance().create(root, templateStr);
 		String outFile;
-		if (FileUtil.isRootPath(reportFile))
+		if (FileUtil.isRootPath(reportFile)) {
 			outFile = reportFile;
-		else
+		} else {
 			outFile = FileUtil.linkPath(DiversityConstants.BASE_DIR, reportFile);
+		}
 		logger.info("检测报告开始生成:{}", outFile);
 		FileUtil.putStringToFile(result, outFile, DiversityConstants.ENCODING);
 	}
@@ -217,12 +227,14 @@ public class StartBooter {
 
 	public static void main(String[] args) {
 		StartBooter diversity = new StartBooter();
-		if (args != null && args.length > 0)
+		if (args != null && args.length > 0) {
 			DiversityConstants.CONFIG_FILE = args[0];
-		if (args != null && args.length > 1)
+		}
+		if (args != null && args.length > 1) {
 			DiversityConstants.BASE_DIR = args[1];
-		else
+		} else {
 			DiversityConstants.BASE_DIR = System.getProperty("user.dir");
+		}
 		// test
 		if (args == null || args.length == 0) {
 			DiversityConstants.BASE_DIR = "D:/personal/sagacity-db-diversity/src/test/resources";
