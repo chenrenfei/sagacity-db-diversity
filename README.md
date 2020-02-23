@@ -7,8 +7,8 @@
 
 # 使用方法:
 ## 1、创建一个目录:db-diversity
-## 2、打包形成一个jar包,如：sagacity-diversity-4.1.2-jar-with-dependencies.jar(含驱动jar) 改名:sagacity-diversity-all.jar 
-    放于db-diversity目录下面，如需其它数据库，创建drivers目录,将驱动放于其中。
+## 2、打包形成一个jar包,如：sagacity-diversity-4.1.3-jar-with-dependencies.jar(含驱动jar) 改名:sagacity-diversity-4.1.3.jar 
+    放于db-diversity下面的libs目录下面，同时根据数据库类型将数据库驱动jar也放入libs目录下面。
 ## 3、编写一个数据库配置文件，db-diversity.xml 内容如下(修改正确数据库连接配置):
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -40,9 +40,9 @@
 	
 </diversity>
 ```
-## 4、编写一个bat文件start-compare.bat
+## 4、编写一个bat文件start-compare.bat (支持jdk9+,jdk9无法通过URLClassLoader动态加载依赖jar包)
 ```
-java -jar sagacity-diversity-all.jar ./db-diversity.xml
+java -cp ./libs/* org.sagacity.tools.diversity.StartBooter ./db-diversity.xml
 cmd
 ```
 ## 5、执行完成后会在当前目录下生成diversity-report.html
