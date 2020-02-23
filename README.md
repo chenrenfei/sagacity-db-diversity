@@ -6,7 +6,7 @@
 
 
 # 使用方法:
-## 1、创建一个目录:db-diversity
+## 1、创建目录:db-diversity  和  db-diversity/libs 
 ## 2、打包形成一个jar包,如：sagacity-diversity-4.1.3-jar-with-dependencies.jar(含驱动jar) 改名:sagacity-diversity-4.1.3.jar 
     放于db-diversity下面的libs目录下面，同时根据数据库类型将数据库驱动jar也放入libs目录下面。
 ## 3、编写一个数据库配置文件，db-diversity.xml 内容如下(修改正确数据库连接配置):
