@@ -41,13 +41,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<dom4j.version>2.1.1</dom4j.version>
-		<slf4j.version>1.7.30</slf4j.version>
 		<log4j.version>2.13.0</log4j.version>
 		<freemarker.version>2.3.29</freemarker.version>
-		<mysql-connector-java.version>8.0.19</mysql-connector-java.version>
-		<ojdbc.version>19.3.0.0</ojdbc.version>
-		<postgresql.version>42.2.9</postgresql.version>
-		<mssql.version>8.2.0.jre8</mssql.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -61,31 +56,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- <dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql-connector-java.version}</version>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.oracle.ojdbc</groupId>
-			<artifactId>ojdbc8</artifactId>
-			<version>${ojdbc.version}</version>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>${postgresql.version}</version>
-			<optional>true</optional>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>mssql-jdbc</artifactId>
-			<version>${mssql.version}</version>
-			<optional>true</optional>
-		</dependency> -->
+
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
@@ -150,6 +121,7 @@
 				<filtering>true</filtering>
 				<includes>
 					<include>META-INF/sagacity-diversity.xsd</include>
+					<include>log4j2.xml</include>
 				</includes>
 			</resource>
 		</resources>

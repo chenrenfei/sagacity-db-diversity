@@ -1,8 +1,6 @@
 package org.sagacity.tools.diversity;
 
 import java.io.File;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -13,8 +11,6 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.config.ConfigurationSource;
-import org.apache.logging.log4j.core.config.Configurator;
 import org.sagacity.tools.diversity.model.DiversityModel;
 import org.sagacity.tools.diversity.model.ReportModel;
 import org.sagacity.tools.diversity.model.TableDiffModel;
@@ -28,7 +24,6 @@ import org.sagacity.tools.diversity.utils.FileUtil;
 import org.sagacity.tools.diversity.utils.IOUtil;
 import org.sagacity.tools.diversity.utils.StringUtil;
 import org.sagacity.tools.diversity.utils.TemplateUtils;
-import static java.lang.System.out;
 
 /**
  * @description 两个数据库比较工具,用于不同环境下数据库表、存储过程、函数等信息的比较,帮助项目在开发、UAT、生产等不同环境比较分析差异,快速定位问题保持环境一致性
@@ -38,30 +33,20 @@ public class StartBooter {
 	/**
 	 * 定义日志
 	 */
-	private Logger logger = null;
+	private Logger logger = LogManager.getLogger(getClass());
 
 	/**
 	 * 初始化
 	 */
 	public void init() {
 		try {
-			String realLogFile = DiversityConstants.LOG_CONFIG;
-			if (realLogFile.charAt(0) == '/') {
-				realLogFile = realLogFile.substring(1);
-			}
-			URL url = Thread.currentThread().getContextClassLoader().getResource(realLogFile);
-			InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(realLogFile);
-			ConfigurationSource source = new ConfigurationSource(stream, url);
-			Configurator.initialize(null, source);
-			logger = LogManager.getLogger(getClass());
-			// 获取jdk版本,jdk9开始无法支持jar包动态支持
 			int javaVersion = Integer.parseInt(System.getProperty("java.version").split("\\.")[0]);
 			if (javaVersion >= 9) {
-				logger.info("请使用java -Djava.ext.dirs=./drivers 方式加载额外依赖jar!");
+				logger.info("jdk9+ 不支持动态加载jar包,请使用java -cp ./libs/* mainClass args 模式!");
 			} else {
 				File driverPath = new File(DiversityConstants.BASE_DIR, DiversityConstants.DRIVER_PATH);
 				if (!driverPath.exists()) {
-					out.println("请正确配置jdbc驱动类,将驱动放于路径:" + driverPath.getAbsolutePath());
+					logger.info("请正确配置jdbc驱动类,将驱动放于路径:" + driverPath.getAbsolutePath());
 				} else {
 					ClassLoaderUtil
 							.loadJarFiles(FileUtil.getPathFiles(driverPath, new String[] { "[\\w|\\-|\\.]+\\.jar$" }));
@@ -70,7 +55,7 @@ public class StartBooter {
 			logger.info("完成环境初始化!");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.err.println("加载log4j配置和jdbc驱动类失败,请检查配置!");
+			logger.error("动态加载jar包失败!");
 		}
 	}
 
@@ -95,7 +80,6 @@ public class StartBooter {
 				return a.getTableName().compareToIgnoreCase(b.getTableName());
 			}
 		});
-		//切换db
 		DBHelper.switchDB(target);
 		List<TableMeta> targetTables = DBHelper.getTableAndView(diversityModel.getInclude(),
 				diversityModel.getExclude());

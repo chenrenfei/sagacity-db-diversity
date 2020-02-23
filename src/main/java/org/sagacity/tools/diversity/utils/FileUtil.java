@@ -238,8 +238,9 @@ public class FileUtil {
 			for (int loop = 0; loop < files.length; loop++) {
 				if (!files[loop].isDirectory()) {
 					matchFilters(fileList, files[loop], filters);
-				} else
+				} else {
 					getPathFiles(files[loop], fileList, filters);
+				}
 			}
 		} else {
 			matchFilters(fileList, parentFile, filters);
@@ -263,8 +264,9 @@ public class FileUtil {
 				}
 				if (!files[loop].isDirectory()) {
 					matchFilters(fileList, files[loop], filters, beginTime, endTime);
-				} else
+				} else {
 					getPathFiles(files[loop], fileList, filters, beginTime, endTime);
+				}
 			}
 		} else {
 			matchFilters(fileList, parentFile, filters, beginTime, endTime);
@@ -284,8 +286,9 @@ public class FileUtil {
 		File file;
 		if (baseDir instanceof String) {
 			file = getFile((String) baseDir);
-		} else
+		} else {
 			file = (File) baseDir;
+		}
 		getPathFiles(file, fileList, filters);
 		return fileList;
 	}
@@ -349,8 +352,7 @@ public class FileUtil {
 
 	/**
 	 * @todo 新建目录
-	 * @param folderPath
-	 *            目录
+	 * @param folderPath 目录
 	 * @return 返回目录创建后的路径
 	 */
 	public static void createFolder(String folderPath) {
@@ -367,10 +369,8 @@ public class FileUtil {
 
 	/**
 	 * @todo 新建文件
-	 * @param filePathAndName
-	 *            文本文件完整绝对路径及文件名
-	 * @param fileContent
-	 *            文本文件内容
+	 * @param filePathAndName 文本文件完整绝对路径及文件名
+	 * @param fileContent     文本文件内容
 	 * @return
 	 */
 
@@ -399,8 +399,7 @@ public class FileUtil {
 
 	/**
 	 * @todo 删除文件
-	 * @param filePathAndName
-	 *            文本文件完整绝对路径及文件名
+	 * @param filePathAndName 文本文件完整绝对路径及文件名
 	 * @return Boolean 成功删除返回true遭遇异常返回false
 	 */
 	public static boolean delFile(String filePathAndName) {
@@ -421,8 +420,7 @@ public class FileUtil {
 
 	/**
 	 * @todo 删除文件夹
-	 * @param folderPath
-	 *            文件夹完整绝对路??
+	 * @param folderPath 文件夹完整绝对路??
 	 * @return
 	 */
 	public static void delFolder(String folderPath) {
@@ -436,8 +434,7 @@ public class FileUtil {
 
 	/**
 	 * @todo 删除指定文件夹下??有文??
-	 * @param path
-	 *            文件夹完整绝对路??
+	 * @param path 文件夹完整绝对路??
 	 * @return
 	 * @return
 	 */
@@ -495,10 +492,8 @@ public class FileUtil {
 
 	/**
 	 * @todo 复制单个文件
-	 * @param oldPathFile
-	 *            准备复制的文件源
-	 * @param newPathFile
-	 *            拷贝到新绝对路径带文件名
+	 * @param oldPathFile 准备复制的文件源
+	 * @param newPathFile 拷贝到新绝对路径带文件名
 	 * @return
 	 */
 	public static boolean copyFile(String oldPathFile, String newPathFile) {
@@ -508,10 +503,8 @@ public class FileUtil {
 
 	/**
 	 * @todo 复制单个文件
-	 * @param oldPathFile
-	 *            准备复制的文件源
-	 * @param newPathFile
-	 *            拷贝到新绝对路径带文件名
+	 * @param oldPathFile 准备复制的文件源
+	 * @param newPathFile 拷贝到新绝对路径带文件名
 	 * @return
 	 */
 	public static boolean copyFile(File oldPathFile, String newPathFile) {
@@ -548,10 +541,8 @@ public class FileUtil {
 
 	/**
 	 * @todo 复制整个文件夹的内容
-	 * @param oldPath
-	 *            准备拷贝的目录
-	 * @param newPath
-	 *            指定绝对路径的新目录
+	 * @param oldPath 准备拷贝的目录
+	 * @param newPath 指定绝对路径的新目录
 	 * @return
 	 */
 	public static void copyFolder(String oldPath, String newPath) {
@@ -645,8 +636,7 @@ public class FileUtil {
 	/**
 	 * @todo 获取文件的摘要，一般应用于检查文件是否被修改过（如在网络传输过程中，下载后取其摘要进行对比）
 	 * @param fileName
-	 * @param digestType
-	 *            :like MD5
+	 * @param digestType :like MD5
 	 * @return
 	 */
 	public static String getFileMessageDigest(String fileName, String digestType) {
@@ -761,8 +751,7 @@ public class FileUtil {
 
 	/**
 	 * @todo 获得指定路径的文件
-	 * @param file
-	 *            文件路径like:classpath:xxx.xml或xxx.xml
+	 * @param file 文件路径like:classpath:xxx.xml或xxx.xml
 	 * @return
 	 */
 	public static InputStream getFileInputStream(Object file) {
@@ -860,10 +849,8 @@ public class FileUtil {
 
 	/**
 	 * @todo 追加文件：使用RandomAccessFile
-	 * @param fileName
-	 *            文件名
-	 * @param content
-	 *            追加的内容
+	 * @param fileName 文件名
+	 * @param content  追加的内容
 	 */
 	public static void appendFileByRandomAccess(Object fileName, String content) {
 		RandomAccessFile randomFile = null;
