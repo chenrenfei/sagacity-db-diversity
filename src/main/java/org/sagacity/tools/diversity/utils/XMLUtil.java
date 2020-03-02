@@ -5,12 +5,9 @@ package org.sagacity.tools.diversity.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.List;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
@@ -26,9 +23,6 @@ import javax.xml.xpath.XPathFactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
 import org.sagacity.tools.diversity.utils.callback.XMLCallbackHandler;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -157,82 +151,6 @@ public class XMLUtil {
 	}
 
 	/**
-	 * @todo 根据qName 获取节点对象
-	 * @param xmlFile
-	 * @param qName
-	 * @return
-	 * @throws Exception
-	 */
-	public static Object getXPathElement(File xmlFile, String qName) throws Exception {
-		SAXReader saxReader = new SAXReader();
-		InputStream is = new FileInputStream(xmlFile);
-		org.dom4j.Document doc = saxReader.read(is);
-		return doc.getRootElement().selectObject(qName);
-	}
-
-	/**
-	 * @todo 获取节点集合
-	 * @param xmlFile
-	 * @param qName
-	 * @return
-	 * @throws Exception
-	 */
-	@SuppressWarnings("rawtypes")
-	public static List getXPathElements(File xmlFile, String qName) throws Exception {
-		SAXReader saxReader = new SAXReader();
-		InputStream is = new FileInputStream(xmlFile);
-		org.dom4j.Document doc = saxReader.read(is);
-		return doc.getRootElement().elements(qName);
-	}
-
-	/**
-	 * @todo 编辑xml文件
-	 * @param xmlFile
-	 * @param charset
-	 * @param isValidator
-	 * @param handler
-	 * @return
-	 * @throws Exception
-	 */
-	public static boolean updateXML(File xmlFile, String charset, boolean isValidator, XMLCallbackHandler handler)
-			throws Exception {
-		if (handler == null || xmlFile == null || !xmlFile.exists())
-			return false;
-		InputStream is = null;
-		FileOutputStream fos = null;
-		try {
-			SAXReader saxReader = new SAXReader();
-			if (!isValidator)
-				saxReader.setFeature(NO_VALIDATOR_FEATURE, false);
-			if (charset != null)
-				saxReader.setEncoding(charset);
-			is = new FileInputStream(xmlFile);
-			if (null != is) {
-				org.dom4j.Document doc = saxReader.read(is);
-				if (null != doc) {
-					handler.process(doc, doc.getRootElement());
-					OutputFormat format = OutputFormat.createPrettyPrint();
-					if (charset != null)
-						format.setEncoding(charset);
-					fos = new FileOutputStream(xmlFile);
-					XMLWriter output = new XMLWriter(fos, format);
-					output.write(doc);
-				}
-				is.close();
-			}
-		} catch (Exception e) {
-			logger.error("修改XML文件:{}错误:{}!", xmlFile, e.getMessage());
-			throw e;
-		} finally {
-			if (fos != null)
-				fos.close();
-			if (is != null)
-				is.close();
-		}
-		return true;
-	}
-
-	/**
 	 * 读取xml文件
 	 * 
 	 * @param xmlFile
@@ -246,28 +164,23 @@ public class XMLUtil {
 		if (StringUtil.isBlank(xmlFile))
 			return null;
 		InputStream fileIS = null;
-		InputStreamReader ir = null;
 		try {
-			SAXReader saxReader = new SAXReader();
-			if (!isValidator)
-				saxReader.setFeature(NO_VALIDATOR_FEATURE, false);
-			if (StringUtil.isNotBlank(charset))
-				saxReader.setEncoding(charset);
-			if (charset != null)
-				ir = new InputStreamReader(FileUtil.getFileInputStream(xmlFile), charset);
-			else
-				ir = new InputStreamReader(FileUtil.getFileInputStream(xmlFile));
-			if (ir != null) {
-				org.dom4j.Document doc = saxReader.read(ir);
-				if (null != doc)
-					return handler.process(doc, doc.getRootElement());
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			if (!isValidator) {
+				factory.setFeature(NO_VALIDATOR_FEATURE, false);
+			}
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			fileIS = FileUtil.getFileInputStream(xmlFile);
+			if (fileIS != null) {
+				Document doc = builder.parse(fileIS);
+				if (null != doc) {
+					return handler.process(doc, doc.getDocumentElement());
+				}
 			}
 		} catch (Exception e) {
 			logger.error("解析文件:{}错误:{}!", xmlFile, e.getMessage());
 			throw e;
 		} finally {
-			if (ir != null)
-				ir.close();
 			if (fileIS != null)
 				fileIS.close();
 		}

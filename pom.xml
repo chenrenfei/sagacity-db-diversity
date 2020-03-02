@@ -40,23 +40,10 @@
 		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
-		<dom4j.version>2.1.1</dom4j.version>
 		<log4j.version>2.13.0</log4j.version>
 		<freemarker.version>2.3.29</freemarker.version>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>org.dom4j</groupId>
-			<artifactId>dom4j</artifactId>
-			<version>${dom4j.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>*</groupId>
-					<artifactId>*</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
