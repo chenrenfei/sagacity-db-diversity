@@ -82,42 +82,42 @@ public class ConfigUtils {
 							if (elt.getElementsByTagName("url") != null) {
 								child = (Element) elt.getElementsByTagName("url").item(0);
 								value = child.getAttribute("value");
-								dbModel.setUrl(value == null ? child.getNodeValue().trim() : value);
+								dbModel.setUrl(StringUtil.isBlank(value) ? child.getTextContent().trim() : value);
 							} else {
 								dbModel.setUrl(elt.getAttribute("url"));
 							}
 							if (elt.getElementsByTagName("driver") != null) {
 								child = (Element) elt.getElementsByTagName("driver").item(0);
 								value = child.getAttribute("value");
-								dbModel.setDriverClass(value == null ? child.getNodeValue().trim() : value);
+								dbModel.setDriverClass(value == null ? child.getTextContent().trim() : value);
 							} else {
 								dbModel.setDriverClass(elt.getAttribute("driver"));
 							}
 							if (elt.getElementsByTagName("password") != null) {
 								child = (Element) elt.getElementsByTagName("password").item(0);
 								value = child.getAttribute("value");
-								dbModel.setPassword(value == null ? child.getNodeValue().trim() : value);
+								dbModel.setPassword(value == null ? child.getTextContent().trim() : value);
 							} else {
 								dbModel.setPassword(elt.getAttribute("password"));
 							}
 							if (elt.getElementsByTagName("username") != null) {
 								child = (Element) elt.getElementsByTagName("username").item(0);
 								value = child.getAttribute("value");
-								dbModel.setUsername(value == null ? child.getNodeValue().trim() : value);
+								dbModel.setUsername(value == null ? child.getTextContent().trim() : value);
 							} else {
 								dbModel.setUsername(elt.getAttribute("username"));
 							}
 							if (elt.getElementsByTagName("schema") != null) {
 								child = (Element) elt.getElementsByTagName("schema").item(0);
 								value = child.getAttribute("value");
-								dbModel.setSchema(value == null ? child.getNodeValue().trim() : value);
+								dbModel.setSchema(value == null ? child.getTextContent().trim() : value);
 							} else {
 								dbModel.setSchema(elt.getAttribute("schema"));
 							}
 							if (elt.getElementsByTagName("catalog") != null) {
 								child = (Element) elt.getElementsByTagName("catalog").item(0);
 								value = child.getAttribute("value");
-								dbModel.setCatalog(value == null ? child.getNodeValue().trim() : value);
+								dbModel.setCatalog(value == null ? child.getTextContent().trim() : value);
 							} else {
 								dbModel.setCatalog(elt.getAttribute("catalog"));
 							}
