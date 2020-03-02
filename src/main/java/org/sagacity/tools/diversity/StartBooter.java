@@ -221,7 +221,7 @@ public class StartBooter {
 		}
 		// test
 		if (args == null || args.length == 0) {
-			DiversityConstants.BASE_DIR = "D:/personal/sagacity-db-diversity/src/test/resources";
+			DiversityConstants.BASE_DIR = "D:/personal/github/sagacity-db-diversity/showcase";
 			DiversityConstants.CONFIG_FILE = "db-diversity.xml";
 		}
 		diversity.submit();
