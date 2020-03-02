@@ -435,7 +435,7 @@ public class DBHelper {
 	 * @throws SQLException
 	 */
 	public static TableForeignModel getTableImpForeignKeys(String tableName) throws Exception {
-		//conn.getMetaData().getf
+		// conn.getMetaData().getf
 		ResultSet rs = conn.getMetaData().getImportedKeys(dbConfig.getCatalog(), dbConfig.getSchema(), tableName);
 		return (TableForeignModel) DBUtil.preparedStatementProcess(null, null, rs,
 				new PreparedStatementResultHandler() {
