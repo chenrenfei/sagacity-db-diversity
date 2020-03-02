@@ -87,7 +87,7 @@ public class ConfigUtils {
 								if (child.hasAttribute("value")) {
 									dbModel.setUrl(child.getAttribute("value"));
 								} else {
-									dbModel.setUrl(child.getFirstChild().getNodeValue());
+									dbModel.setUrl(child.getTextContent());
 								}
 							} else {
 								dbModel.setUrl(elt.getAttribute("url"));
@@ -98,7 +98,7 @@ public class ConfigUtils {
 								if (child.hasAttribute("value")) {
 									dbModel.setDriverClass(child.getAttribute("value"));
 								} else {
-									dbModel.setDriverClass(child.getFirstChild().getNodeValue());
+									dbModel.setDriverClass(StringUtil.trim(child.getTextContent()));
 								}
 							} else {
 								dbModel.setDriverClass(elt.getAttribute("driver"));
@@ -109,7 +109,7 @@ public class ConfigUtils {
 								if (child.hasAttribute("value")) {
 									dbModel.setPassword(child.getAttribute("value"));
 								} else {
-									dbModel.setPassword(child.getFirstChild().getNodeValue());
+									dbModel.setPassword(StringUtil.trim(child.getTextContent()));
 								}
 							} else {
 								dbModel.setPassword(elt.getAttribute("password"));
@@ -120,7 +120,7 @@ public class ConfigUtils {
 								if (child.hasAttribute("value")) {
 									dbModel.setUsername(child.getAttribute("value"));
 								} else {
-									dbModel.setUsername(child.getFirstChild().getNodeValue());
+									dbModel.setUsername(StringUtil.trim(child.getTextContent()));
 								}
 							} else {
 								dbModel.setUsername(elt.getAttribute("username"));
@@ -131,7 +131,7 @@ public class ConfigUtils {
 								if (child.hasAttribute("value")) {
 									dbModel.setSchema(child.getAttribute("value"));
 								} else {
-									dbModel.setSchema(child.getFirstChild().getNodeValue());
+									dbModel.setSchema(StringUtil.trim(child.getTextContent()));
 								}
 							} else {
 								dbModel.setSchema(elt.getAttribute("schema"));
@@ -142,7 +142,7 @@ public class ConfigUtils {
 								if (child.hasAttribute("value")) {
 									dbModel.setCatalog(child.getAttribute("value"));
 								} else {
-									dbModel.setCatalog(child.getFirstChild().getNodeValue());
+									dbModel.setCatalog(StringUtil.trim(child.getTextContent()));
 								}
 							} else {
 								dbModel.setCatalog(elt.getAttribute("catalog"));
