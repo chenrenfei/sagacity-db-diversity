@@ -87,7 +87,7 @@ public class ConfigUtils {
 								if (child.hasAttribute("value")) {
 									dbModel.setUrl(child.getAttribute("value"));
 								} else {
-									dbModel.setUrl(child.getTextContent());
+									dbModel.setUrl(StringUtil.trim(child.getTextContent()));
 								}
 							} else {
 								dbModel.setUrl(elt.getAttribute("url"));
