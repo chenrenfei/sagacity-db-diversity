@@ -3,15 +3,16 @@
  */
 package org.sagacity.tools.diversity.utils;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.sagacity.tools.diversity.DiversityConstants;
 import org.sagacity.tools.diversity.model.DataSourceModel;
 import org.sagacity.tools.diversity.model.DiversityModel;
 import org.sagacity.tools.diversity.utils.callback.XMLCallbackHandler;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 /**
- * @author zhong
+ * @author zhongxuchen
  *         <db-diversity only-differ="true" report-template="" report-file="">
  *         <reference-db url="" driver="" username="" password="" />
  *         <target-db url="" driver="" username="" password="" />
@@ -70,8 +71,9 @@ public class ConfigUtils {
 							diversityModel.setExclude(new String[] { var });
 						String[] dbs = { "reference-db", "target-db" };
 						Element elt;
-						String value;
+						// String value;
 						Element child;
+						NodeList nodeList;
 						for (String name : dbs) {
 							elt = (Element) root.getElementsByTagName(name).item(0);
 							DataSourceModel dbModel = new DataSourceModel();
@@ -79,45 +81,69 @@ public class ConfigUtils {
 							if (StringUtil.isBlank(dbModel.getName())) {
 								dbModel.setName(name);
 							}
-							if (elt.getElementsByTagName("url") != null) {
-								child = (Element) elt.getElementsByTagName("url").item(0);
-								value = child.getAttribute("value");
-								dbModel.setUrl(StringUtil.isBlank(value) ? child.getTextContent().trim() : value);
+							nodeList = elt.getElementsByTagName("url");
+							if (nodeList != null && nodeList.getLength() > 0) {
+								child = (Element) nodeList.item(0);
+								if (child.hasAttribute("value")) {
+									dbModel.setUrl(child.getAttribute("value"));
+								} else {
+									dbModel.setUrl(child.getFirstChild().getNodeValue());
+								}
 							} else {
 								dbModel.setUrl(elt.getAttribute("url"));
 							}
-							if (elt.getElementsByTagName("driver") != null) {
-								child = (Element) elt.getElementsByTagName("driver").item(0);
-								value = child.getAttribute("value");
-								dbModel.setDriverClass(value == null ? child.getTextContent().trim() : value);
+							nodeList = elt.getElementsByTagName("driver");
+							if (nodeList != null && nodeList.getLength() > 0) {
+								child = (Element) nodeList.item(0);
+								if (child.hasAttribute("value")) {
+									dbModel.setDriverClass(child.getAttribute("value"));
+								} else {
+									dbModel.setDriverClass(child.getFirstChild().getNodeValue());
+								}
 							} else {
 								dbModel.setDriverClass(elt.getAttribute("driver"));
 							}
-							if (elt.getElementsByTagName("password") != null) {
-								child = (Element) elt.getElementsByTagName("password").item(0);
-								value = child.getAttribute("value");
-								dbModel.setPassword(value == null ? child.getTextContent().trim() : value);
+							nodeList = elt.getElementsByTagName("password");
+							if (nodeList != null && nodeList.getLength() > 0) {
+								child = (Element) nodeList.item(0);
+								if (child.hasAttribute("value")) {
+									dbModel.setPassword(child.getAttribute("value"));
+								} else {
+									dbModel.setPassword(child.getFirstChild().getNodeValue());
+								}
 							} else {
 								dbModel.setPassword(elt.getAttribute("password"));
 							}
-							if (elt.getElementsByTagName("username") != null) {
-								child = (Element) elt.getElementsByTagName("username").item(0);
-								value = child.getAttribute("value");
-								dbModel.setUsername(value == null ? child.getTextContent().trim() : value);
+							nodeList = elt.getElementsByTagName("username");
+							if (nodeList != null && nodeList.getLength() > 0) {
+								child = (Element) nodeList.item(0);
+								if (child.hasAttribute("value")) {
+									dbModel.setUsername(child.getAttribute("value"));
+								} else {
+									dbModel.setUsername(child.getFirstChild().getNodeValue());
+								}
 							} else {
 								dbModel.setUsername(elt.getAttribute("username"));
 							}
-							if (elt.getElementsByTagName("schema") != null) {
-								child = (Element) elt.getElementsByTagName("schema").item(0);
-								value = child.getAttribute("value");
-								dbModel.setSchema(value == null ? child.getTextContent().trim() : value);
+							nodeList = elt.getElementsByTagName("schema");
+							if (nodeList != null && nodeList.getLength() > 0) {
+								child = (Element) nodeList.item(0);
+								if (child.hasAttribute("value")) {
+									dbModel.setSchema(child.getAttribute("value"));
+								} else {
+									dbModel.setSchema(child.getFirstChild().getNodeValue());
+								}
 							} else {
 								dbModel.setSchema(elt.getAttribute("schema"));
 							}
-							if (elt.getElementsByTagName("catalog") != null) {
-								child = (Element) elt.getElementsByTagName("catalog").item(0);
-								value = child.getAttribute("value");
-								dbModel.setCatalog(value == null ? child.getTextContent().trim() : value);
+							nodeList = elt.getElementsByTagName("catalog");
+							if (nodeList != null && nodeList.getLength() > 0) {
+								child = (Element) nodeList.item(0);
+								if (child.hasAttribute("value")) {
+									dbModel.setCatalog(child.getAttribute("value"));
+								} else {
+									dbModel.setCatalog(child.getFirstChild().getNodeValue());
+								}
 							} else {
 								dbModel.setCatalog(elt.getAttribute("catalog"));
 							}
