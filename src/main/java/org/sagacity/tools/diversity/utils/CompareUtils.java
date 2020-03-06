@@ -112,6 +112,9 @@ public class CompareUtils {
 			return "db:" + targetDB + " 中的表无字段!";
 		}
 		StringBuilder result = new StringBuilder();
+		if (sourceSize != targetSize) {
+			result.append("列数量分别为:[" + sourceSize + "][" + targetSize + "]<br/>");
+		}
 		for (TableColumnMeta var : source) {
 			boolean has = false;
 			for (TableColumnMeta var1 : target) {
@@ -133,11 +136,11 @@ public class CompareUtils {
 					if (!ignoreComment && !equals(var.getColRemark(), var1.getColRemark()))
 						msg.append(" 备注不一致!");
 					if (msg.length() > 0)
-						result.append("<br>字段:").append(var.getColName()).append(msg).append("</br>");
+						result.append("字段:").append(var.getColName()).append(msg).append("<br/>");
 				}
 			}
 			if (!has) {
-				result.append("<br>字段:[" + var.getColName() + "]在db:[" + targetDB + "] 中不存在!</br>");
+				result.append("字段:[" + var.getColName() + "]在db:[" + targetDB + "] 中不存在!<br/>");
 			}
 		}
 
@@ -151,13 +154,13 @@ public class CompareUtils {
 				}
 			}
 			if (!has) {
-				result.append("<br>字段:[" + var.getColName() + "]在db:[" + referenceDB + "]中不存在!</br>");
+				result.append("字段:[" + var.getColName() + "]在db:[" + referenceDB + "]中不存在!<br/>");
 			}
 		}
 		String tmp = result.toString();
 		if (tmp.equals(""))
 			return null;
-		return "<br>列数量分别为:[" + sourceSize + "][" + targetSize + "]</br>".concat(tmp);
+		return tmp;
 	}
 
 	/**

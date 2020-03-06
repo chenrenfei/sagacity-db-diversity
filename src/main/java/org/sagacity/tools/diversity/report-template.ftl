@@ -6,11 +6,14 @@
 	<style>
 	.table{font-size:14px;
 	width:100%;
-	text-align: center;	
+	text-align:left;	
 	border-spacing: 0;
 	table-layout: auto;
-	line-height:32px;}	
-		
+	line-height:32px;
+	}	
+   .table th {
+	text-align: center;	
+	}	
 	</style>
 </head>
 
