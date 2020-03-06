@@ -451,7 +451,7 @@ public class DBHelper {
 							String pkColName = rs.getString("PKCOLUMN_NAME");
 							String fkColName = rs.getString("FKCOLUMN_NAME");
 							// 避免重复
-							if (!map.containsKey(pkColName)) {
+							if (!map.containsKey(pkColName.toUpperCase())) {
 								if (result.getFkColumns() == null) {
 									result.setFkColumns(new String[] { fkColName });
 									result.setPkColumns(new String[] { pkColName });
@@ -467,7 +467,7 @@ public class DBHelper {
 									result.setPkColumns(pkColumns);
 									result.setFkColumns(fkColumns);
 								}
-								map.put(pkColName, fkColName);
+								map.put(pkColName.toUpperCase(), fkColName);
 							}
 						}
 						this.setResult(result);
