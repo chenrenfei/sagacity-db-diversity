@@ -119,19 +119,19 @@ public class CompareUtils {
 					has = true;
 					StringBuilder msg = new StringBuilder();
 					if (!equals(var.getTypeName(), var1.getTypeName()))
-						msg.append("数据类型[" + var.getTypeName() + "][" + var1.getTypeName() + "]不一致!");
+						msg.append(" 数据类型[" + var.getTypeName() + "][" + var1.getTypeName() + "]不一致!");
 					if (var.getLength() != var1.getLength() || var.getScale() != var1.getScale())
-						msg.append("类型长度[" + var.getLength() + "," + var.getScale() + "][" + var1.getLength() + ","
+						msg.append(" 类型长度[" + var.getLength() + "," + var.getScale() + "][" + var1.getLength() + ","
 								+ var1.getScale() + "]或精度不一致!");
 					if (!equals(var.getColDefault(), var1.getColDefault()))
-						msg.append("默认值[" + var.getColDefault() + "][" + var1.getColDefault() + "]不一样!");
+						msg.append(" 默认值[" + var.getColDefault() + "][" + var1.getColDefault() + "]不一样!");
 					if (!equals(var.isAutoIncrement(), var1.isAutoIncrement()))
 						msg.append(
-								"主键autoIncrement=[" + var.isAutoIncrement() + "][" + var1.isAutoIncrement() + "]不一致!");
+								" 主键autoIncrement=[" + var.isAutoIncrement() + "][" + var1.isAutoIncrement() + "]不一致!");
 					if (!equals(var.isNullable(), var1.isNullable()))
-						msg.append("nullable=[" + var.isNullable() + "][" + var1.isNullable() + "]不一致!");
+						msg.append(" nullable=[" + var.isNullable() + "][" + var1.isNullable() + "]不一致!");
 					if (!ignoreComment && !equals(var.getColRemark(), var1.getColRemark()))
-						msg.append("备注不一致!");
+						msg.append(" 备注不一致!");
 					if (msg.length() > 0)
 						result.append("<br>字段:").append(var.getColName()).append(msg).append("</br>");
 				}
