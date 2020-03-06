@@ -151,14 +151,13 @@ public class CompareUtils {
 				}
 			}
 			if (!has) {
-				result.append("<br>字段:[" + var.getColName() + "]在referenceDB中不存在!</br>");
+				result.append("<br>字段:[" + var.getColName() + "]在db:[" + referenceDB + "]中不存在!</br>");
 			}
 		}
 		String tmp = result.toString();
 		if (tmp.equals(""))
 			return null;
-		else
-			return "<br>列数量分别为:[" + sourceSize + "][" + targetSize + "]</br>".concat(tmp);
+		return "<br>列数量分别为:[" + sourceSize + "][" + targetSize + "]</br>".concat(tmp);
 	}
 
 	/**
@@ -217,8 +216,8 @@ public class CompareUtils {
 		// 列全部相同
 		if (count == source.length) {
 			return null;
-		} else
-			return "列名称不相同!";
+		}
+		return "列名称不相同!";
 	}
 
 	/**
@@ -230,7 +229,7 @@ public class CompareUtils {
 	private static boolean equals(Object target, Object compared) {
 		if (null == target) {
 			return target == compared;
-		} else
-			return target.equals(compared);
+		}
+		return target.equals(compared);
 	}
 }
