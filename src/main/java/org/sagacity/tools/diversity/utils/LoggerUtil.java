@@ -22,7 +22,7 @@ public class LoggerUtil {
 			logger = Logger.getLogger("sagacity.quickvo");
 			logger.setLevel(Level.ALL);
 			try {
-				Handler handler = new FileHandler(FileUtil.linkPath(DiversityConstants.BASE_DIR, "quickvo.log"));
+				Handler handler = new FileHandler(FileUtil.linkPath(DiversityConstants.BASE_DIR, "db-diversity.log"));
 				handler.setFormatter(new SimpleFormatter());
 				logger.addHandler(handler);
 			} catch (Exception e) {
