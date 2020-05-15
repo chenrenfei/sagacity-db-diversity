@@ -1,0 +1,38 @@
+五月 16, 2020 12:04:48 上午 org.sagacity.tools.diversity.StartBooter init
+信息: 请正确配置jdbc驱动类,将驱动放于路径:D:\workspace\personal\github\sagacity-db-diversity\showcase\drivers
+五月 16, 2020 12:04:48 上午 org.sagacity.tools.diversity.StartBooter init
+信息: 完成环境初始化!
+五月 16, 2020 12:04:48 上午 org.sagacity.tools.diversity.StartBooter submit
+信息: 解析配置文件!
+五月 16, 2020 12:04:48 上午 org.sagacity.tools.diversity.StartBooter submit
+信息: 开始分析对比2个数据库查询!
+五月 16, 2020 12:04:48 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_area_info
+五月 16, 2020 12:04:48 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_complexpk_head
+五月 16, 2020 12:04:48 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_complexpk_item
+五月 16, 2020 12:04:48 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_device_order_info
+五月 16, 2020 12:04:49 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_dict_detail
+五月 16, 2020 12:04:49 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_dict_type
+五月 16, 2020 12:04:49 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_organ_info
+五月 16, 2020 12:04:49 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_staff_auth_orgs
+五月 16, 2020 12:04:49 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_staff_info
+五月 16, 2020 12:04:49 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_trans_info_15d
+五月 16, 2020 12:04:49 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_trans_info_his
+五月 16, 2020 12:04:49 上午 org.sagacity.tools.diversity.StartBooter diversity
+信息: 正在比较表:sqltoy_user_log
+五月 16, 2020 12:04:49 上午 org.sagacity.tools.diversity.StartBooter submit
+信息: 开始生成检测报表!
+五月 16, 2020 12:04:50 上午 org.sagacity.tools.diversity.StartBooter report
+信息: 检测报告开始生成:D:\workspace\personal\github\sagacity-db-diversity\showcase\diversity-report.html
+五月 16, 2020 12:04:50 上午 org.sagacity.tools.diversity.StartBooter submit
+信息: 完成生成检测报表!
