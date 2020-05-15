@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.logging.Logger;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
@@ -21,8 +22,6 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.sagacity.tools.diversity.utils.callback.XMLCallbackHandler;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -37,7 +36,7 @@ public class XMLUtil {
 	/**
 	 * 定义日志
 	 */
-	private final static Logger logger = LogManager.getLogger(XMLUtil.class);
+	private final static Logger logger = LoggerUtil.getLogger();
 
 	// xml 忽视验证的特性
 	private final static String NO_VALIDATOR_FEATURE = "http://apache.org/xml/features/nonvalidating/load-external-dtd";
@@ -64,10 +63,10 @@ public class XMLUtil {
 			validator.validate(xmlSource);
 			return true;
 		} catch (IOException ioe) {
-			logger.error("文件IO读取失败!" + ioe.getMessage());
+			logger.info("文件IO读取失败!" + ioe.getMessage());
 			ioe.printStackTrace();
 		} catch (SAXException ex) {
-			logger.error("xml验证不合法:" + ex.getMessage());
+			logger.info("xml验证不合法:" + ex.getMessage());
 			ex.printStackTrace();
 		}
 		return false;
@@ -92,10 +91,10 @@ public class XMLUtil {
 			validator.validate(xmlSource);
 			return true;
 		} catch (IOException ioe) {
-			logger.error("文件IO读取失败!" + ioe.getMessage());
+			logger.info("文件IO读取失败!" + ioe.getMessage());
 			ioe.printStackTrace();
 		} catch (SAXException ex) {
-			logger.error("xml验证不合法:" + ex.getMessage());
+			logger.info("xml验证不合法:" + ex.getMessage());
 			ex.printStackTrace();
 		}
 		return false;
@@ -122,10 +121,10 @@ public class XMLUtil {
 			validator.validate(source);
 			return true;
 		} catch (IOException ioe) {
-			logger.error("文件IO读取失败!" + ioe.getMessage());
+			logger.info("文件IO读取失败!" + ioe.getMessage());
 			ioe.printStackTrace();
 		} catch (SAXException ex) {
-			logger.error(xmlFile + " is not valid " + ex.getMessage());
+			logger.info(xmlFile + " is not valid " + ex.getMessage());
 			ex.printStackTrace();
 		}
 		return false;
@@ -178,7 +177,7 @@ public class XMLUtil {
 				}
 			}
 		} catch (Exception e) {
-			logger.error("解析文件:{}错误:{}!", xmlFile, e.getMessage());
+			logger.info("解析文件:" + xmlFile + " 错误!" + e.getMessage());
 			throw e;
 		} finally {
 			if (fileIS != null)

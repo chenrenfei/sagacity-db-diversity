@@ -17,9 +17,7 @@ import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger;
 
 /**
  * @project sagacity-core
@@ -32,7 +30,7 @@ public class IOUtil {
 	/**
 	 * 定义日志
 	 */
-	private final static Logger logger = LogManager.getLogger(IOUtil.class);
+	private final static Logger logger = LoggerUtil.getLogger();
 
 	/**
 	 * 转换String为InputStream
@@ -73,7 +71,7 @@ public class IOUtil {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.getMessage());
+			logger.info(e.getMessage());
 		} finally {
 			closeQuietly(in);
 		}

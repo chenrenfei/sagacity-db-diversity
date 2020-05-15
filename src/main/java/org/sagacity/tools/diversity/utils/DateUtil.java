@@ -15,9 +15,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.Locale;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger;
 
 /**
  * @project sagacity-core
@@ -34,7 +32,7 @@ public class DateUtil {
 	/**
 	 * 定义日志
 	 */
-	private final static Logger logger = LogManager.getLogger(DateUtil.class);
+	private final static Logger logger = LoggerUtil.getLogger();
 
 	private static final String[] CHINA_DATE_KEYS = { "○", "О", "0", "Ο", "O", "零", "一", "二", "三", "四", "五", "六", "七",
 			"八", "九", "十", "年", "月", "日", "时", "分", "秒" };
@@ -137,13 +135,13 @@ public class DateUtil {
 
 	public static Date parse(Object data, String format, String local) {
 		if (null == data) {
-			logger.error("The date string is null!");
+			logger.info("The date string is null!");
 			return null;
 		}
 		if (data instanceof String) {
 			String dateString = data.toString().trim();
 			if ("".equals(dateString) || "null".equals(dateString.toLowerCase())) {
-				logger.error("The date string is null!");
+				logger.info("The date string is null!");
 				return null;
 			}
 			return parseString(dateString, format, local);

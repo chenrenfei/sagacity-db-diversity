@@ -26,9 +26,8 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Logger;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.sagacity.tools.diversity.utils.callback.IFileFilter;
 
 /**
@@ -42,7 +41,7 @@ public class FileUtil {
 	/**
 	 * 定义全局日志
 	 */
-	private final static Logger logger = LogManager.getLogger(FileUtil.class);
+	private final static Logger logger = LoggerUtil.getLogger();
 
 	/**
 	 * @todo 将文件转到OutputStream
@@ -526,12 +525,12 @@ public class FileUtil {
 				fs.flush();
 				return true;
 			} else {
-				logger.error("文件=" + oldPathFile + "不存在!计划改名对应的文件为=" + newPathFile);
+				logger.info("文件=" + oldPathFile + "不存在!计划改名对应的文件为=" + newPathFile);
 				return false;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("复制文件:" + oldPathFile + " 到目标文件:" + newPathFile + " 操作失败!");
+			logger.info("复制文件:" + oldPathFile + " 到目标文件:" + newPathFile + " 操作失败!");
 			System.err.println("复制单个文件操作出错");
 		} finally {
 			IOUtil.closeQuietly(fs, inStream);

@@ -8,9 +8,8 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.sagacity.tools.diversity.model.DiversityModel;
 import org.sagacity.tools.diversity.model.ReportModel;
 import org.sagacity.tools.diversity.model.TableDiffModel;
@@ -22,6 +21,7 @@ import org.sagacity.tools.diversity.utils.DBHelper;
 import org.sagacity.tools.diversity.utils.DateUtil;
 import org.sagacity.tools.diversity.utils.FileUtil;
 import org.sagacity.tools.diversity.utils.IOUtil;
+import org.sagacity.tools.diversity.utils.LoggerUtil;
 import org.sagacity.tools.diversity.utils.StringUtil;
 import org.sagacity.tools.diversity.utils.TemplateUtils;
 
@@ -33,13 +33,14 @@ public class StartBooter {
 	/**
 	 * 定义日志
 	 */
-	private Logger logger = LogManager.getLogger(getClass());
+	private static Logger logger;
 
 	/**
 	 * 初始化
 	 */
 	public void init() {
 		try {
+			logger = LoggerUtil.getLogger();
 			int javaVersion = Integer.parseInt(System.getProperty("java.version").split("\\.")[0]);
 			if (javaVersion >= 9) {
 				logger.info("jdk9+ 不支持动态加载jar包,请使用java -cp ./libs/* mainClass args 模式!");
@@ -55,7 +56,7 @@ public class StartBooter {
 			logger.info("完成环境初始化!");
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("动态加载jar包失败!");
+			logger.info("动态加载jar包失败!");
 		}
 	}
 
@@ -146,7 +147,7 @@ public class StartBooter {
 				targetMeta.setPkModel(DBHelper.getTablePKConstraint(tableName));
 				targetMeta.setForeignKeys(DBHelper.getTableImpForeignKeys(tableName));
 				targetMeta.setIndexes(DBHelper.getTableIndex(tableName));
-				logger.info("正在比较表:{}", tableName);
+				logger.info("正在比较表:" + tableName);
 				CompareUtils.compare(diversityModel, diffModel);
 				if (StringUtil.isBlank(diffModel.getColumnsDifference())
 						&& StringUtil.isBlank(diffModel.getForeignKeyDifference())
@@ -183,7 +184,7 @@ public class StartBooter {
 		} else {
 			outFile = FileUtil.linkPath(DiversityConstants.BASE_DIR, reportFile);
 		}
-		logger.info("检测报告开始生成:{}", outFile);
+		logger.info("检测报告开始生成:" + outFile);
 		FileUtil.putStringToFile(result, outFile, DiversityConstants.ENCODING);
 	}
 

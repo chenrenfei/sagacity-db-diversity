@@ -12,9 +12,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger;
 
 /**
  * @project sagacity-core
@@ -28,16 +26,14 @@ public class ClassLoaderUtil {
 	 * 定义日志
 	 */
 	@SuppressWarnings("unused")
-	private final static Logger logger = LogManager
-			.getLogger(ClassLoaderUtil.class);
+	private final static Logger logger = LoggerUtil.getLogger();
 
 	private static Field classes;
 	private static Method addURL;
 	static {
 		try {
 			classes = ClassLoader.class.getDeclaredField("classes");
-			addURL = URLClassLoader.class.getDeclaredMethod("addURL",
-					new Class[] { URL.class });
+			addURL = URLClassLoader.class.getDeclaredMethod("addURL", new Class[] { URL.class });
 		} catch (Exception e) {
 			// won't happen,but remain it throw new RootException(e);
 		}
@@ -141,8 +137,7 @@ public class ClassLoaderUtil {
 	 * @param urlClassLoader
 	 * @param url
 	 */
-	public static void addURL2ClassLoader(URLClassLoader urlClassLoader,
-			URL[] urls) {
+	public static void addURL2ClassLoader(URLClassLoader urlClassLoader, URL[] urls) {
 		try {
 			invoke(urlClassLoader, urls);
 		} catch (Exception e) {
@@ -152,11 +147,11 @@ public class ClassLoaderUtil {
 
 	/**
 	 * 增加jar或zip文件到指定的UrlClassLoader中
+	 * 
 	 * @param urlClassLoader
 	 * @param dirOrJars
 	 */
-	public static void addClassPath(URLClassLoader urlClassLoader,
-			File[] dirOrJars) {
+	public static void addClassPath(URLClassLoader urlClassLoader, File[] dirOrJars) {
 		try {
 			URL[] urls = convertFile2URL(dirOrJars);
 			invoke(urlClassLoader, urls);
@@ -193,8 +188,7 @@ public class ClassLoaderUtil {
 	}
 
 	@SuppressWarnings("deprecation")
-	private static URL[] convertFile2URL(File[] dirOrJars)
-			throws MalformedURLException {
+	private static URL[] convertFile2URL(File[] dirOrJars) throws MalformedURLException {
 		if (dirOrJars == null || dirOrJars.length < 1)
 			return null;
 		URL[] urls = new URL[dirOrJars.length];
@@ -204,8 +198,7 @@ public class ClassLoaderUtil {
 		return urls;
 	}
 
-	private static void invoke(URLClassLoader urlClassLoader, URL[] urls)
-			throws Exception {
+	private static void invoke(URLClassLoader urlClassLoader, URL[] urls) throws Exception {
 		for (int i = 0; i < urls.length; i++)
 			addURL.invoke(urlClassLoader, urls[i]);
 	}
@@ -228,8 +221,7 @@ public class ClassLoaderUtil {
 			File[] pureFiles = new File[pureJarFiles.size()];
 			for (int i = 0; i < pureFiles.length; i++)
 				pureFiles[i] = (File) pureJarFiles.get(i);
-			addClassPath((URLClassLoader) ClassLoader.getSystemClassLoader(),
-					pureFiles);
+			addClassPath((URLClassLoader) ClassLoader.getSystemClassLoader(), pureFiles);
 		}
 	}
 }

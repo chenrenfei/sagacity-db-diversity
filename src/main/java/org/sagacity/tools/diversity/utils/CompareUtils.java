@@ -2,8 +2,6 @@ package org.sagacity.tools.diversity.utils;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.sagacity.tools.diversity.model.DiversityModel;
 import org.sagacity.tools.diversity.model.TableColumnMeta;
 import org.sagacity.tools.diversity.model.TableDiffModel;
@@ -18,10 +16,6 @@ import org.sagacity.tools.diversity.model.TablePkModel;
  *
  */
 public class CompareUtils {
-	/**
-	 * 定义日志
-	 */
-	private Logger logger = LogManager.getLogger(getClass());
 
 	/**
 	 * @todo 两张表进行比较

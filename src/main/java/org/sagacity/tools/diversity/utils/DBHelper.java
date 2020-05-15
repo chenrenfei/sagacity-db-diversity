@@ -10,9 +10,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.sagacity.tools.diversity.model.DataSourceModel;
 import org.sagacity.tools.diversity.model.DiversityModel;
 import org.sagacity.tools.diversity.model.FunctionModel;
@@ -36,7 +35,7 @@ public class DBHelper {
 	/**
 	 * 定义全局日志
 	 */
-	private final static Logger logger = LogManager.getLogger(DBHelper.class);
+	private final static Logger logger = LoggerUtil.getLogger();
 
 	/**
 	 * 数据库连接
@@ -68,10 +67,10 @@ public class DBHelper {
 			return true;
 		} catch (ClassNotFoundException cnfe) {
 			cnfe.printStackTrace();
-			logger.error("数据库驱动未能加载，请在/drivers 目录下放入正确的数据库驱动jar包!");
+			logger.info("数据库驱动未能加载，请在/libs 目录下放入正确的数据库驱动jar包!");
 			throw cnfe;
 		} catch (SQLException se) {
-			logger.error("获取数据库连接失败!");
+			logger.info("获取数据库连接失败!");
 			throw se;
 		}
 	}

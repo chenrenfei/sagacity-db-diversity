@@ -13,9 +13,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger;
 
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.StringTemplateLoader;
@@ -33,7 +31,7 @@ public class TemplateUtils {
 	/**
 	 * 定义全局日志
 	 */
-	private final static Logger logger = LogManager.getLogger(TemplateUtils.class);
+	private final static Logger logger = LoggerUtil.getLogger();
 	private static Configuration cfg = null;
 
 	public static TemplateUtils me = new TemplateUtils();
@@ -90,7 +88,7 @@ public class TemplateUtils {
 			result = writer.getBuffer().toString();
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.getMessage(), e);
+			logger.info(e.getMessage());
 		} finally {
 			IOUtil.closeQuietly(writer);
 		}
@@ -118,7 +116,7 @@ public class TemplateUtils {
 			result = writer.getBuffer().toString();
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.getMessage(), e);
+			logger.info(e.getMessage());
 		} finally {
 			IOUtil.closeQuietly(writer);
 		}
@@ -166,7 +164,7 @@ public class TemplateUtils {
 			writer.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.getMessage(), e);
+			logger.info(e.getMessage());
 		} finally {
 			IOUtil.closeQuietly(fout, writer);
 		}
@@ -220,7 +218,7 @@ public class TemplateUtils {
 			writer.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.getMessage(), e);
+			logger.info(e.getMessage());
 		} finally {
 			IOUtil.closeQuietly(writer);
 		}
@@ -264,7 +262,7 @@ public class TemplateUtils {
 			writer.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.getMessage(), e);
+			logger.info(e.getMessage());
 		} finally {
 			IOUtil.closeQuietly(out, writer);
 		}
@@ -308,7 +306,7 @@ public class TemplateUtils {
 			writer.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.getMessage(), e);
+			logger.info(e.getMessage());
 		} finally {
 			IOUtil.closeQuietly(out, writer);
 		}
@@ -346,7 +344,7 @@ public class TemplateUtils {
 			result = writer.getBuffer().toString();
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.getMessage(), e);
+			logger.info(e.getMessage());
 		} finally {
 			IOUtil.closeQuietly(writer);
 		}
@@ -387,7 +385,7 @@ public class TemplateUtils {
 			writer.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.getMessage(), e);
+			logger.info(e.getMessage());
 		} finally {
 			IOUtil.closeQuietly(writer);
 		}
