@@ -1,6 +1,7 @@
 target/#
 .classpath
-/.settings/
+.settings/*
+/.settings/#
 /showcase/*.log
 /bin/
 
