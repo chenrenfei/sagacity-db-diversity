@@ -1,6 +1,8 @@
 target/#
-bin/#
-bin
+.classpath
+.settings
+/showcase/*.log
+/bin/
 
 /target/
 dependency-reduced-pom.xml
