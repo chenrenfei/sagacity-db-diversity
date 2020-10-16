@@ -163,11 +163,13 @@ public class DateUtil {
 	 * @return
 	 */
 	public static Date parseString(String dateStr, String dateFormat, String locale) {
-		if (dateStr == null)
+		if (dateStr == null) {
 			return null;
+		}
 		dateStr = dateStr.trim();
-		if ("".equals(dateStr))
+		if ("".equals(dateStr)) {
 			return null;
+		}
 		String realDF = null;
 		if (StringUtil.isNotBlank(dateFormat)) {
 			realDF = dateFormat;
@@ -185,16 +187,18 @@ public class DateUtil {
 				}
 				try {
 					result = dateParser.parse(dateStr);
-					if (result != null)
+					if (result != null) {
 						break;
+					}
 				} catch (ParseException pe) {
 				}
 			}
 			return result;
 		} else {
 			// 中文日期格式
-			if (StringUtil.matches(dateStr, "[年月日时分秒]"))
+			if (StringUtil.matches(dateStr, "[年月日时分秒]")) {
 				dateStr = parseChinaDate(dateStr);
+			}
 			// 含中文，但非标准的时间性中文
 			else if (StringUtil.isContainChinese(dateStr)) {
 				return null;
@@ -213,24 +217,28 @@ public class DateUtil {
 				if (size > 16) {
 					realDF = "yyyyMMdd HHmmssSSS";
 				} else if (size == 16) {
-					if (preSize == 8)
+					if (preSize == 8) {
 						realDF = "yyyyMMdd HHmmssS";
-					else
+					} else {
 						realDF = "yyMMdd HHmmssSSS";
+					}
 				} else if (size == 13) {
-					if (preSize == 8)
+					if (preSize == 8) {
 						realDF = "yyyyMMdd HHmm";
-					else
+					} else {
 						realDF = "yyMMdd HHmmss";
+					}
 				} else if (size == 11) {
-					if (preSize == 8)
+					if (preSize == 8) {
 						realDF = "yyyyMMdd HH";
-					else
+					} else {
 						realDF = "yyMMdd HHmm";
-				} else if (size == 9)
+					}
+				} else if (size == 9) {
 					realDF = "yyMMdd HH";
-				else
+				} else {
 					realDF = "yyyyMMdd HHmmss";
+				}
 			} else {
 				// 去除数字中带的,例如:201,512
 				dateStr = dateStr.replace(",", "");
@@ -239,40 +247,44 @@ public class DateUtil {
 					if (dateStr.indexOf(".") != -1) {
 						realDF = "HH:mm:ss.SSS";
 					} else {
-						if (size == 5)
+						if (size == 5) {
 							realDF = "HH:mm";
-						else
+						} else {
 							realDF = "HH:mm:ss";
+						}
 					}
 				} else {
 					dateStr = dateStr.replace("-", "/").replace(".", "/");
 					splitCount = StringUtil.matchCnt(dateStr, "\\/");
 					if (splitCount == 2) {
 						startIndex = dateStr.indexOf("/");
-						if (startIndex == 2)
+						if (startIndex == 2) {
 							realDF = "yy/MM/dd";
-						else
+						} else {
 							realDF = "yyyy/MM/dd";
+						}
 					} else if (splitCount == 1) {
-						if (size > 5)
+						if (size > 5) {
 							realDF = "yyyy/MM";
-						else
+						} else {
 							realDF = "yy/MM";
+						}
 					} else {
-						if (size >= 15)
+						if (size >= 15) {
 							realDF = "yyyyMMddHHmmssSSS";
-						else if (size == 14)
+						} else if (size == 14) {
 							realDF = "yyyyMMddHHmmss";
-						else if (size == 12)
+						} else if (size == 12) {
 							realDF = "yyMMddHHmmss";
-						else if (size == 10)
+						} else if (size == 10) {
 							realDF = "yyyyMMddHH";
-						else if (size == 6)
+						} else if (size == 6) {
 							realDF = "yyyyMM";
-						else if (size == 4)
+						} else if (size == 4) {
 							realDF = "yyyy";
-						else
+						} else {
 							realDF = "yyyyMMdd";
+						}
 					}
 				}
 			}
@@ -307,24 +319,27 @@ public class DateUtil {
 			return null;
 		}
 		if (!(dt instanceof String) && !(dt instanceof java.sql.Date) && !(dt instanceof java.util.Date)
-				&& !(dt instanceof java.lang.Number))
+				&& !(dt instanceof java.lang.Number)) {
 			throw new IllegalArgumentException(dt + "日期数据必须是String、Date、Long、Integer类型,请正确输入!");
+		}
 		Date result = null;
 		String dtStr = dt.toString();
 		if (dt instanceof String) {
 			result = parseString(dtStr, format, local);
-		} else if (dt instanceof java.util.Date)
+		} else if (dt instanceof java.util.Date) {
 			result = new java.util.Date(((java.util.Date) dt).getTime());
-		else if (dt instanceof java.sql.Date)
+		} else if (dt instanceof java.sql.Date) {
 			result = new java.util.Date(((java.sql.Date) dt).getTime());
-		else if (dt instanceof java.lang.Number) {
+		} else if (dt instanceof java.lang.Number) {
 			// 13位表示毫秒数
-			if (dtStr.length() != 13)
+			if (dtStr.length() != 13) {
 				result = parseString(dtStr, format, local);
-			else
+			} else {
 				result = new java.util.Date(((Number) dt).longValue());
-		} else
+			}
+		} else {
 			result = parseString(dtStr, format, local);
+		}
 		return result;
 	}
 
@@ -339,8 +354,9 @@ public class DateUtil {
 	}
 
 	public static String formatDate(Object dt, String fmt, String locale) {
-		if (dt == null)
+		if (dt == null) {
 			return null;
+		}
 		if (fmt.equalsIgnoreCase("YY")) {
 			String year = Integer.toString(getYear(dt));
 			return year.substring(year.length() - 2);
@@ -396,8 +412,9 @@ public class DateUtil {
 	// Add millisecond
 	public static Date addMilliSecond(Object dt, long millisecond) {
 		Date result = convertDateObject(dt);
-		if (millisecond != 0)
+		if (millisecond != 0) {
 			result.setTime(result.getTime() + millisecond);
+		}
 		return result;
 	}
 
@@ -486,8 +503,9 @@ public class DateUtil {
 
 	public static int getYear(Object dateValue) {
 		GregorianCalendar currentDate = new GregorianCalendar();
-		if (dateValue != null)
+		if (dateValue != null) {
 			currentDate.setTime(convertDateObject(dateValue));
+		}
 		return currentDate.get(Calendar.YEAR);
 	}
 
