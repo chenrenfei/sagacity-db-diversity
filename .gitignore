@@ -6,3 +6,5 @@
 /.idea/
 *.iml
 sagacity-sqltoy.iml
+.classpath
+*.prefs
