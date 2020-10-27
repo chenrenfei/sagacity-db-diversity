@@ -40,7 +40,7 @@
 	
 </diversity>
 ```
-## 4、编写一个bat文件start-compare.bat (支持jdk9+,jdk9无法通过URLClassLoader动态加载依赖jar包)
+## 4、编写一个bat文件start-compare.bat
 ```
 java -cp ./libs/* org.sagacity.tools.diversity.StartBooter ./db-diversity.xml
 cmd
