@@ -3,8 +3,8 @@ package org.sagacity.tools.diversity.model;
 /**
  * @project sagacity-quickvo
  * @description 数据库表字段属性
- * @author chenrenfei $<a href="mailto:zhongxuchen@hotmail.com">联系作者</a>$
- * @version $id:TableColumnMeta.java,Revision:v1.0,Date:2009-2-24 下午03:27:29 $
+ * @author chenrenfei <a href="mailto:zhongxuchen@hotmail.com">联系作者</a>
+ * @version id:TableColumnMeta.java,Revision:v1.0,Date:2009-2-24
  */
 public class TableColumnMeta implements java.io.Serializable {
 	/**
@@ -92,8 +92,7 @@ public class TableColumnMeta implements java.io.Serializable {
 	}
 
 	/**
-	 * @param length
-	 *            the length to set
+	 * @param length the length to set
 	 */
 	public void setLength(int length) {
 		this.length = length;
@@ -149,8 +148,7 @@ public class TableColumnMeta implements java.io.Serializable {
 	}
 
 	/**
-	 * @param precision
-	 *            the precision to set
+	 * @param precision the precision to set
 	 */
 	public void setPrecision(int precision) {
 		this.precision = precision;
@@ -164,8 +162,7 @@ public class TableColumnMeta implements java.io.Serializable {
 	}
 
 	/**
-	 * @param scale
-	 *            the scale to set
+	 * @param scale the scale to set
 	 */
 	public void setScale(int scale) {
 		this.scale = scale;
@@ -211,8 +208,7 @@ public class TableColumnMeta implements java.io.Serializable {
 	}
 
 	/**
-	 * @param numPrecRadix
-	 *            the numPrecRadix to set
+	 * @param numPrecRadix the numPrecRadix to set
 	 */
 	public void setNumPrecRadix(int numPrecRadix) {
 		this.numPrecRadix = numPrecRadix;
@@ -226,8 +222,7 @@ public class TableColumnMeta implements java.io.Serializable {
 	}
 
 	/**
-	 * @param voPropertyIndex
-	 *            the voPropertyIndex to set
+	 * @param voPropertyIndex the voPropertyIndex to set
 	 */
 	public void setVoPropertyIndex(int voPropertyIndex) {
 		this.voPropertyIndex = voPropertyIndex;
@@ -241,8 +236,7 @@ public class TableColumnMeta implements java.io.Serializable {
 	}
 
 	/**
-	 * @param isAutoIncrement
-	 *            the isAutoIncrement to set
+	 * @param isAutoIncrement the isAutoIncrement to set
 	 */
 	public void setAutoIncrement(boolean isAutoIncrement) {
 		this.isAutoIncrement = isAutoIncrement;

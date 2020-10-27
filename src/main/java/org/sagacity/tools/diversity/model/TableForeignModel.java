@@ -1,5 +1,12 @@
 package org.sagacity.tools.diversity.model;
 
+/**
+ * @project sagacity-db-diversity
+ * @description 外键模型
+ * @author zhong 
+ * @version v1.0, Date:2020-10-27
+ * @modify 2020-10-27,修改说明
+ */
 public class TableForeignModel implements java.io.Serializable {
 
 	/**

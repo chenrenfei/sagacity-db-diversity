@@ -4,10 +4,11 @@ import java.io.Serializable;
 import java.util.Collection;
 
 /**
- * 
- * 
- * @author zhong
- *
+ * @project sagacity-db-diversity
+ * @description 对比报告模型
+ * @author zhong 
+ * @version v1.0, Date:2020-10-27
+ * @modify 2020-10-27,修改说明
  */
 public class ReportModel implements Serializable {
 

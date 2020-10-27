@@ -3,10 +3,11 @@ package org.sagacity.tools.diversity.model;
 import java.io.Serializable;
 
 /**
- * 数据库索引模型
- * 
- * @author zhong
- *
+ * @project sagacity-db-diversity
+ * @description 数据库索引模型
+ * @author zhongxuchen
+ * @version v1.0, Date:2020-10-27
+ * @modify 2020-10-27,修改说明
  */
 public class TableIndexModel implements Serializable {
 	/**
