@@ -1,9 +1,8 @@
-target/#
-.classpath
-.settings/*
-/.settings/#
-/showcase/*.log
-/bin/
-
 /target/
-dependency-reduced-pom.xml
+/bin/
+/.settings/
+/.classpath
+.classpath
+/.idea/
+*.iml
+sagacity-sqltoy.iml

@@ -2,6 +2,13 @@ package org.sagacity.tools.diversity.model;
 
 import java.io.Serializable;
 
+/**
+ * @project sagacity-db-diversity
+ * @description 数据库对比配置模型
+ * @author zhong
+ * @version v1.0, Date:2020-10-27
+ * @modify 2020-10-27,修改说明
+ */
 public class DiversityModel implements Serializable {
 
 	/**
@@ -34,8 +41,14 @@ public class DiversityModel implements Serializable {
 	 */
 	private boolean ignoreIndexName = true;
 
+	/**
+	 * 包含的表
+	 */
 	private String[] include;
 
+	/**
+	 * 排除的表
+	 */
 	private String[] exclude;
 
 	/**
@@ -71,8 +84,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param refrence
-	 *            the refrence to set
+	 * @param refrence the refrence to set
 	 */
 	public void setReference(DataSourceModel reference) {
 		this.reference = reference;
@@ -86,8 +98,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param target
-	 *            the target to set
+	 * @param target the target to set
 	 */
 	public void setTarget(DataSourceModel target) {
 		this.target = target;
@@ -101,8 +112,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param onlyDiffer
-	 *            the onlyDiffer to set
+	 * @param onlyDiffer the onlyDiffer to set
 	 */
 	public void setOnlyDiffer(Boolean onlyDiffer) {
 		this.onlyDiffer = onlyDiffer;
@@ -116,8 +126,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param reportTemplate
-	 *            the reportTemplate to set
+	 * @param reportTemplate the reportTemplate to set
 	 */
 	public void setReportTemplate(String reportTemplate) {
 		this.reportTemplate = reportTemplate;
@@ -131,8 +140,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param reportFile
-	 *            the reportFile to set
+	 * @param reportFile the reportFile to set
 	 */
 	public void setReportFile(String reportFile) {
 		this.reportFile = reportFile;
@@ -146,8 +154,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param include
-	 *            the include to set
+	 * @param include the include to set
 	 */
 	public void setInclude(String[] include) {
 		this.include = include;
@@ -161,8 +168,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param exclude
-	 *            the exclude to set
+	 * @param exclude the exclude to set
 	 */
 	public void setExclude(String[] exclude) {
 		this.exclude = exclude;
@@ -176,8 +182,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param ignorComment
-	 *            the ignorComment to set
+	 * @param ignorComment the ignorComment to set
 	 */
 	public void setIgnorComment(boolean ignorComment) {
 		this.ignorComment = ignorComment;
@@ -191,8 +196,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param ignorePkName
-	 *            the ignorePkName to set
+	 * @param ignorePkName the ignorePkName to set
 	 */
 	public void setIgnorePkName(boolean ignorePkName) {
 		this.ignorePkName = ignorePkName;
@@ -206,8 +210,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param ignoreForeignKeyName
-	 *            the ignoreForeignKeyName to set
+	 * @param ignoreForeignKeyName the ignoreForeignKeyName to set
 	 */
 	public void setIgnoreForeignKeyName(boolean ignoreForeignKeyName) {
 		this.ignoreForeignKeyName = ignoreForeignKeyName;
@@ -221,8 +224,7 @@ public class DiversityModel implements Serializable {
 	}
 
 	/**
-	 * @param ignoreExportKeyName
-	 *            the ignoreExportKeyName to set
+	 * @param ignoreExportKeyName the ignoreExportKeyName to set
 	 */
 	public void setIgnoreExportKeyName(boolean ignoreExportKeyName) {
 		this.ignoreExportKeyName = ignoreExportKeyName;

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 /**
- * 报告模型
+ * 
  * 
  * @author zhong
  *

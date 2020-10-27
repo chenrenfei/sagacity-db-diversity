@@ -6,8 +6,11 @@ package org.sagacity.tools.diversity.model;
 import java.io.Serializable;
 
 /**
+ * @project sagacity-db-diversity
+ * @description 数据源配置
  * @author zhong
- *
+ * @version v1.0, Date:2020-10-27
+ * @modify 2020-10-27,修改说明
  */
 public class DataSourceModel implements Serializable {
 
@@ -56,8 +59,7 @@ public class DataSourceModel implements Serializable {
 	}
 
 	/**
-	 * @param name
-	 *            the name to set
+	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -71,8 +73,7 @@ public class DataSourceModel implements Serializable {
 	}
 
 	/**
-	 * @param url
-	 *            the url to set
+	 * @param url the url to set
 	 */
 	public void setUrl(String url) {
 		this.url = url;
@@ -86,8 +87,7 @@ public class DataSourceModel implements Serializable {
 	}
 
 	/**
-	 * @param driverClass
-	 *            the driverClass to set
+	 * @param driverClass the driverClass to set
 	 */
 	public void setDriverClass(String driverClass) {
 		this.driverClass = driverClass;
@@ -101,8 +101,7 @@ public class DataSourceModel implements Serializable {
 	}
 
 	/**
-	 * @param username
-	 *            the username to set
+	 * @param username the username to set
 	 */
 	public void setUsername(String username) {
 		this.username = username;
@@ -116,8 +115,7 @@ public class DataSourceModel implements Serializable {
 	}
 
 	/**
-	 * @param password
-	 *            the password to set
+	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;

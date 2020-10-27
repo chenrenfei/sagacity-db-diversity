@@ -3,9 +3,11 @@ package org.sagacity.tools.diversity.model;
 import java.io.Serializable;
 
 /**
- * 
+ * @project sagacity-db-diversity
+ * @description 数据库函数模型
  * @author zhong
- *
+ * @version v1.0, Date:2020-10-27
+ * @modify 2020-10-27,修改说明
  */
 public class FunctionModel implements Serializable {
 
@@ -45,6 +47,5 @@ public class FunctionModel implements Serializable {
 	public void setColumns(String[] columns) {
 		this.columns = columns;
 	}
-	
-	
+
 }
